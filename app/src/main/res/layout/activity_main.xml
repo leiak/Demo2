@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.hello.demo2.MainActivity">
+
+    <TextView
+        android:id="@+id/maintext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="main activity"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+         />
+    <EditText
+        android:id="@+id/edittext"
+        android:hint="hello demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button-url"
+        android:textAllCaps="false"
+         />
+    <Button
+        android:id="@+id/btnpro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button_progressbar"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btndia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button_alertdialog"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btnprodia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button_progressDialog"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btnlistview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button_Basiclistview"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btnselflistview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button_selflistview"
+        android:textAllCaps="false"
+        />
+    <Button
+        android:id="@+id/btnbroadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="button-broadcast"
+        android:textAllCaps="false"/>
+    <ImageView
+        android:id="@+id/image_view"
+        android:src="@drawable/icon_my_redbag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ProgressBar
+        android:id="@+id/proid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"/>
+
+</LinearLayout>
