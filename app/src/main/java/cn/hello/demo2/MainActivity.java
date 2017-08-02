@@ -52,6 +52,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button btnbroadcast = (Button) findViewById(R.id.btnbroadcast);
         btnbroadcast.setOnClickListener(this);
 
+        /*okhttp demo*/
+        Button btnokhttp = (Button) findViewById(R.id.btnokhttp);
+        btnokhttp.setOnClickListener(this);
+
 
     }
 
@@ -82,6 +86,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnbroadcast:
                 Intent intentbroadcast = new Intent(MainActivity.this,BroadcastActivity.class);
                 startActivity(intentbroadcast);
+                break;
+            case R.id.btnokhttp:
+                Intent intentokhhtp = new Intent(MainActivity.this,OkhttpActivity.class);
+                startActivity(intentokhhtp);
                 break;
             case R.id.btndia:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);

@@ -64,12 +64,23 @@
         android:text="Button_selflistview"
         android:textAllCaps="false"
         />
-    <Button
-        android:id="@+id/btnbroadcast"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="button-broadcast"
-        android:textAllCaps="false"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnbroadcast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button-broadcast"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/btnokhttp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button-okhttp"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/image_view"
         android:src="@drawable/icon_my_redbag"
