@@ -55,6 +55,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         /*okhttp demo*/
         Button btnokhttp = (Button) findViewById(R.id.btnokhttp);
         btnokhttp.setOnClickListener(this);
+        /*baidu map demo*/
+        Button btnbaidumap = (Button) findViewById(R.id.btnbaidumap);
+        btnbaidumap.setOnClickListener(this);
+
+        Button btnbaidumap2 = (Button) findViewById(R.id.btnbaidumap2);
+        btnbaidumap2.setOnClickListener(this);
+
 
 
     }
@@ -90,6 +97,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnokhttp:
                 Intent intentokhhtp = new Intent(MainActivity.this,OkhttpActivity.class);
                 startActivity(intentokhhtp);
+                break;
+            case R.id.btnbaidumap:
+                Intent intentbaidumap = new Intent(MainActivity.this,BaiduMapActivity.class);
+                startActivity(intentbaidumap);
+                break;
+            case R.id.btnbaidumap2:
+                Intent intentbaidumap2 = new Intent(MainActivity.this,BaiduMapSecondActivity.class);
+                startActivity(intentbaidumap2);
                 break;
             case R.id.btndia:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);

@@ -22,48 +22,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button-url"
-        android:textAllCaps="false"
-         />
-    <Button
-        android:id="@+id/btnpro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button_progressbar"
-        android:textAllCaps="false"
-        />
-    <Button
-        android:id="@+id/btndia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button_alertdialog"
-        android:textAllCaps="false"
-        />
-    <Button
-        android:id="@+id/btnprodia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button_progressDialog"
-        android:textAllCaps="false"
-        />
-    <Button
-        android:id="@+id/btnlistview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button_Basiclistview"
-        android:textAllCaps="false"
-        />
-    <Button
-        android:id="@+id/btnselflistview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button_selflistview"
-        android:textAllCaps="false"
-        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button-url"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btnpro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button_progressbar"
+            android:textAllCaps="false"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btndia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button_alertdialog"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btnselflistview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button_selflistview"
+            android:textAllCaps="false"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnprodia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button_progressDialog"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/btnlistview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button_Basiclistview"
+            android:textAllCaps="false"
+            />
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -78,6 +92,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="button-okhttp"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/btnbaidumap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btnbaidumap"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnbaidumap2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btnbaidumap2"
             android:textAllCaps="false"/>
     </LinearLayout>
 
