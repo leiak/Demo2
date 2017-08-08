@@ -16,11 +16,14 @@ public class RotateDownPageTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(View view, float position) {
 
-        Log.e("TAG", view + " , " + position + "");
+        //Log.d("RotateDown", view + " , " + position + "");
+
+        Log.d("DepthPageTransformer", view.getTag() + " , " + position + "");
 
         if (position < -1)
         {
             //ViewHelper.setRotation(view, 0);
+
             view.setRotation(0);
 
         } else if (position <= 1)

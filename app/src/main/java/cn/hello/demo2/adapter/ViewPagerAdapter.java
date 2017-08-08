@@ -35,4 +35,5 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         super(fragmentManager);
         this.fragmentList=arrayList;
     }
+
 }
