@@ -9,6 +9,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.hello.demo2.adapter.FruitAdapter;
+
 public class SelfListViewActivity extends BaseActivity {
 
     private List<Fruit> fruitList = new ArrayList<>();

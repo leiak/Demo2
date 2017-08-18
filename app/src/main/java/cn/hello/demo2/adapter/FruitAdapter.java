@@ -1,4 +1,4 @@
-package cn.hello.demo2;
+package cn.hello.demo2.adapter;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import cn.hello.demo2.Fruit;
+import cn.hello.demo2.R;
 
 /**
  * Created by Administrator on 2017/8/1.

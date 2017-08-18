@@ -62,6 +62,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button btnbaidumap2 = (Button) findViewById(R.id.btnbaidumap2);
         btnbaidumap2.setOnClickListener(this);
 
+        Button btnwelcome = (Button) findViewById(R.id.btnwelcome);
+        btnwelcome.setOnClickListener(this);
+
 
 
     }
@@ -105,6 +108,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnbaidumap2:
                 Intent intentbaidumap2 = new Intent(MainActivity.this,BaiduMapSecondActivity.class);
                 startActivity(intentbaidumap2);
+                break;
+            case R.id.btnwelcome:
+                Intent intentwelcome = new Intent(MainActivity.this,WelcomeActivity.class);
+                startActivity(intentwelcome);
                 break;
             case R.id.btndia:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);

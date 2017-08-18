@@ -1,7 +1,6 @@
 package cn.hello.demo2;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,16 +36,14 @@ public class ViewPagerActivity extends FragmentActivity {
         setContentView(R.layout.activity_view_pager);
         SharedPreferences preferences = getSharedPreferences("in", Context.MODE_PRIVATE);
         int flags = preferences.getInt("flags", 0);
-        if (flags == 1) {
-            Intent intent = new Intent(ViewPagerActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            initView();
-        }
-
-
-        //int flags = preferences.getInt("flags", 0);
+//        if (flags == 1) {
+//            Intent intent = new Intent(ViewPagerActivity.this, WelcomeActivity.class);
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            initView();
+//        }
+        initView();
     }
 
     private void initView(){

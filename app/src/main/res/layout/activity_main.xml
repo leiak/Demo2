@@ -109,6 +109,12 @@
             android:layout_height="wrap_content"
             android:text="btnbaidumap2"
             android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/btnwelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btnwelcome"
+            android:textAllCaps="false"/>
     </LinearLayout>
 
     <ImageView
