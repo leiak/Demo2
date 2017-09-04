@@ -31,6 +31,7 @@ public class SlideThreeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
+
             }
         });
         // Inflate the layout for this fragment
