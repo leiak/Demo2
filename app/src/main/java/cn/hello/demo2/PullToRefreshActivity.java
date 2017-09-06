@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.handmark.pulltorefresh.library.LoadingLayoutProxy;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -37,6 +38,8 @@ public class PullToRefreshActivity extends AppCompatActivity {
     private LinkedList<String> mListItems;
     //给listview添加一个普通的适配器
     private ArrayAdapter<String> mAdapter;
+    //用于设置刷新控件刷新时的文本等的对象
+    private LoadingLayoutProxy layoutProxy;
 
 
 
@@ -64,7 +67,9 @@ public class PullToRefreshActivity extends AppCompatActivity {
                 // 开始执行异步任务，传入适配器来进行数据改变
                 new GetDataTask(mPullRefreshListView, mAdapter,mListItems).execute();
             }
+
         });
+
 
         // 添加滑动到底部的监听器
         mPullRefreshListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
@@ -74,6 +79,20 @@ public class PullToRefreshActivity extends AppCompatActivity {
                 Toast.makeText(getApplication(), "已经到底了", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //mPullRefreshListView.onRefreshComplete();
+
+        //layoutProxy初始化时候的两个参数，分别表示应用于哪里，第一个参数表示是否应用于刷新头部，第二个参数表示是否应用于尾部。
+        layoutProxy = (LoadingLayoutProxy) mPullRefreshListView.getLoadingLayoutProxy(true, false);
+        //下拉的时候显示的文本
+        layoutProxy.setPullLabel("很好，继续向下拖！");
+        //可以放开刷新的时候显示的文本
+        layoutProxy.setReleaseLabel("放开那只萝莉，让我来！");
+        //执行刷新的时候显示的文本
+        layoutProxy.setRefreshingLabel("正在刷新喵~");
+        //设置加载的图片
+        layoutProxy.setLoadingDrawable(getResources().getDrawable(R.drawable.xsearch_msg_pull_arrow_down));
+
 
         //mPullRefreshListView.isScrollingWhileRefreshingEnabled();//看刷新时是否允许滑动
         //在刷新时允许继续滑动
@@ -86,9 +105,9 @@ public class PullToRefreshActivity extends AppCompatActivity {
          * 设置反馈音效
          */
         SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(this);
-        //soundListener.addSoundEvent(State.PULL_TO_REFRESH, R.raw.pull_event);
-        //soundListener.addSoundEvent(State.RESET, R.raw.reset_sound);
-        //soundListener.addSoundEvent(State.REFRESHING, R.raw.refreshing_sound);
+        soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.analyst_receive);
+        soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.private_receive);
+        soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.suggest_receive);
         mPullRefreshListView.setOnPullEventListener(soundListener);
     }
 
@@ -96,7 +115,7 @@ public class PullToRefreshActivity extends AppCompatActivity {
      * 设置listview的适配器
      */
     private void initListView() {
-        //通过getRefreshableView()来得到一个listview对象
+        //通过getRefreshableView()来得到一个listview对象-获取带有刷新的对应控件
         actualListView = mPullRefreshListView.getRefreshableView();
 
         String []data = new String[] {"android","ios","wp","java","c++","c#"};

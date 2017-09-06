@@ -44,10 +44,10 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
         //得到当前的模式
         Mode mode = mPullRefreshListView.getCurrentMode();
         if(mode == Mode.PULL_FROM_START) {
-            mListItems.addFirst("这是刷新出来的数据");
+            mListItems.addFirst("这是从上刷新出来的数据");
         }
         else {
-            mListItems.addLast("这是刷新出来的数据");
+            mListItems.addLast("这是从下刷新出来的数据");
         }
         // 通知数据改变了
         mAdapter.notifyDataSetChanged();
