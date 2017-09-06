@@ -69,9 +69,12 @@
             android:process=":remote"/>
 
         <activity android:name=".BaiduMapSecondActivity"/>
+
         <activity android:name=".WelcomeActivity"/>
+        <!--侧滑-->
         <activity android:name=".DrawerLayoutActivity">
         </activity>
+        <!--下拉刷新-->
         <activity android:name=".PullToRefreshActivity">
         </activity>
     </application>
