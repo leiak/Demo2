@@ -115,6 +115,22 @@
             android:layout_height="wrap_content"
             android:text="btnwelcome"
             android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/btnDrawerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DrawerLayout"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/PulltoRefresh"
+            android:text="pulltorefresh"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <ImageView

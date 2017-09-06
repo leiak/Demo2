@@ -21,9 +21,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
-
-//add something
+        //add something
 
         TextView testView = (TextView) findViewById(R.id.maintext);
 
@@ -64,6 +62,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         Button btnwelcome = (Button) findViewById(R.id.btnwelcome);
         btnwelcome.setOnClickListener(this);
+
+        Button btnDrawerLayout = (Button) findViewById(R.id.btnDrawerLayout);
+        btnDrawerLayout.setOnClickListener(this);
+
+        Button PulltoRefresh = (Button) findViewById(R.id.PulltoRefresh);
+        PulltoRefresh.setOnClickListener(this);
 
 
 
@@ -113,6 +117,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 Intent intentwelcome = new Intent(MainActivity.this,WelcomeActivity.class);
                 startActivity(intentwelcome);
                 break;
+            case R.id.btnDrawerLayout:
+                Intent intentDrawerLayout = new Intent(MainActivity.this,DrawerLayoutActivity.class);
+                startActivity(intentDrawerLayout);
+                break;
             case R.id.btndia:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                 dialog.setTitle("hello title");
@@ -134,6 +142,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.btnprodia:
                 ProgressDialog dialog4 = ProgressDialog.show(this, "提示", "正在登陆中", false, true);
+                break;
+            case R.id.PulltoRefresh:
+                Intent pulltorefresh = new Intent(MainActivity.this,PullToRefreshActivity.class);
+                startActivity(pulltorefresh);
+                break;
             default:
                 break;
 
