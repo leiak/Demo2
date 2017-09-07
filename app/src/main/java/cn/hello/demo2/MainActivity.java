@@ -1,14 +1,20 @@
 package cn.hello.demo2;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
@@ -68,6 +74,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         Button PulltoRefresh = (Button) findViewById(R.id.PulltoRefresh);
         PulltoRefresh.setOnClickListener(this);
+
+        Button Notification = (Button) findViewById(R.id.notification);
+        Notification.setOnClickListener(this);
 
 
 
@@ -147,9 +156,38 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 Intent pulltorefresh = new Intent(MainActivity.this,PullToRefreshActivity.class);
                 startActivity(pulltorefresh);
                 break;
+            case R.id.notification:
+                NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                Notification notification = new NotificationCompat.Builder(this)
+                        .setContentTitle("This is title")
+                        .setContentText("This is content text")
+                        .setWhen(System.currentTimeMillis())
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+                        .build();
+                manager.notify(1,notification);
+                break;
             default:
                 break;
 
         }
+    }
+
+    //两秒内按返回键两次退出程序
+    private long exitTime = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if((System.currentTimeMillis()-exitTime) > 2000){
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

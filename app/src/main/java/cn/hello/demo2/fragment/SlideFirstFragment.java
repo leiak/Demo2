@@ -27,4 +27,6 @@ public class SlideFirstFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_slide_first, container, false);
     }
 
+
+
 }

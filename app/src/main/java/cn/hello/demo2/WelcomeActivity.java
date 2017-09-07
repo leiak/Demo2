@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,14 @@ import java.util.List;
 import cn.hello.demo2.adapter.MyFragmentAdapter;
 import cn.hello.demo2.fragment.Fragment1;
 import cn.hello.demo2.fragment.Fragment2;
+
+
+/*
+* ViewPager是android扩展包v4包中的类 左右切换当前的view，实现滑动切换的效果。
+* ViewPager类需要PagerAdapter适配器类提供数据
+* FragmentTabHost 用于实现点击选项进行切换选项卡的自定义效果
+* */
+
 
 public class WelcomeActivity extends FragmentActivity implements
         ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener {
@@ -36,9 +43,9 @@ public class WelcomeActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        Log.d("welcome","oncreate");
+
         initView();//初始化控件
-        Log.d("welcome","initview");
+
         initPage();//初始化页面
     }
 
@@ -55,7 +62,7 @@ public class WelcomeActivity extends FragmentActivity implements
         /*实例化FragmentTabHost对象并进行绑定*/
         mTabHost =  findViewById(android.R.id.tabhost);//绑定tahost
         mTabHost.setup(this, getSupportFragmentManager(), R.id.pager);//绑定viewpager
-        mTabHost.setup(this, getSupportFragmentManager());
+
 
         /*实现setOnTabChangedListener接口,目的是为监听界面切换），然后实现TabHost里面图片文字的选中状态切换*/
         /*简单来说,是为了当点击下面菜单时,上面的ViewPager能滑动到对应的Fragment*/
@@ -86,7 +93,8 @@ public class WelcomeActivity extends FragmentActivity implements
 
         //绑定Fragment适配器
         vp.setAdapter(new MyFragmentAdapter(getSupportFragmentManager(), list));
-        mTabHost.getTabWidget().setDividerDrawable(null);
+        //设置分隔线颜色 但是没管用
+        mTabHost.getTabWidget().setDividerDrawable(R.color.colorPrimary);
     }
 
     private View getTabItemView(int i) {
