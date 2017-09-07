@@ -29,8 +29,10 @@ public class SlideThreeFragment extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
+                getActivity().finish();
 
             }
         });
