@@ -32,6 +32,13 @@ public class BaseActivity extends AppCompatActivity {
         Log.d("BaseActivity",getClass().getSimpleName());
         ActivityController.removeActivity(this);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
+
     //no understand
     public static void actionStart(Context context,String data1,String data2){
         Intent intent = new Intent(context,Main2Activity.class);

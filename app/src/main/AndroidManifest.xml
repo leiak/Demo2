@@ -32,6 +32,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon, android:theme">
+        
+        <provider
+            android:authorities="cn.hello.demo2.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="fGVRq9mlL6sCn9cpm1tt0yBtGfpqrfQz"/>
@@ -69,13 +79,16 @@
             android:process=":remote"/>
 
         <activity android:name=".BaiduMapSecondActivity"/>
-
         <activity android:name=".WelcomeActivity"/>
-        <!--侧滑-->
+        <!-- 侧滑 -->
         <activity android:name=".DrawerLayoutActivity">
         </activity>
-        <!--下拉刷新-->
+        <!-- 下拉刷新 -->
         <activity android:name=".PullToRefreshActivity">
+        </activity>
+        <activity android:name=".NotificationActivity">
+        </activity>
+        <activity android:name=".TakePhotoActivity">
         </activity>
     </application>
 

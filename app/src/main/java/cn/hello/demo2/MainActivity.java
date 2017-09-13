@@ -3,23 +3,45 @@ package cn.hello.demo2;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.zhouwei.mzbanner.MZBannerView;
+import com.zhouwei.mzbanner.holder.MZHolderCreator;
+import com.zhouwei.mzbanner.holder.MZViewHolder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
+    private static final String TAG = "MainActivity";
+
     private ProgressBar progressBar;
     private ProgressDialog dialog4;
+    private MZBannerView mMZBanner;
+
+    public static final String[] IMGS = new String[]{"http://img3.imgtn.bdimg.com/it/u=1157091805,2188328024&fm=26&gp=0.jpg",
+            "http://img3.imgtn.bdimg.com/it/u=1704332224,615354977&fm=200&gp=0.jpg",
+            "http://img0.imgtn.bdimg.com/it/u=1996140688,1469391704&fm=200&gp=0.jpg"};
 
 
     @Override
@@ -27,11 +49,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        int id = R.layout.activity_main;
+        Log.d(TAG,"id is "+id);
+
         //add something
+        //固定竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //状态栏全透明 并且高度也变为0  底部view顶到最上边
+        //StatusBarUtil.transparencyBar(this);
 
-        TextView testView = (TextView) findViewById(R.id.maintext);
+        //TextView testView = (TextView) findViewById(R.id.maintext);
 
-        testView.setOnClickListener(this);
+        //testView.setOnClickListener(this);
 
         Button button3 = (Button) findViewById(R.id.button3);
         button3.setOnClickListener(this);
@@ -78,17 +107,91 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button Notification = (Button) findViewById(R.id.notification);
         Notification.setOnClickListener(this);
 
+        Button Notification2 = (Button) findViewById(R.id.notification2);
+        Notification2.setOnClickListener(this);
+
+        Button takephoto = (Button) findViewById(R.id.takephoto);
+        takephoto.setOnClickListener(this);
+
+        mMZBanner = (MZBannerView) findViewById(R.id.banner);
+
+        final List<String> list = new ArrayList<>();
+        for (int i = 0; i < IMGS.length; i++) {
+            list.add(IMGS[i]);
+        }
+
+        // 设置数据
+        mMZBanner.setPages(list, new MZHolderCreator<BannerViewHolder>() {
+            @Override
+            public BannerViewHolder createViewHolder() {
+                return new BannerViewHolder();
+            }
+        });
+        mMZBanner.setDelayedTime(5000);
+
+
+
+
 
 
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mMZBanner.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMZBanner.pause();
+    }
+
+    public class BannerViewHolder implements MZViewHolder<String> {
+        private ImageView mImageView;
+        @Override
+        public View createView(Context context) {
+            // 返回页面布局
+            View view = LayoutInflater.from(context).inflate(R.layout.banner_item,null);
+            mImageView = view.findViewById(R.id.banner_image);
+            return view;
+        }
+
+        @Override
+        public void onBind(Context context, final int position, String data) {
+
+            Log.d(TAG,data);
+            Log.d(TAG,"onBind id is "+position);
+
+            Glide.with(MainActivity.this).load(data)
+                    .bitmapTransform(new RoundedCornersTransformation(context, 15, 0, RoundedCornersTransformation.CornerType.ALL))
+                    .into(mImageView);
+            mImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(MainActivity.this, "you click the "+position+" image", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        }
+    }
+
+
+
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.maintext:
-                Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-                startActivity(intent);
+            case R.id.takephoto:
+                Intent takephoto = new Intent(MainActivity.this,TakePhotoActivity.class);
+                startActivity(takephoto);
                 break;
+//            case R.id.maintext:
+//                Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+//                startActivity(intent);
+//                break;
             case R.id.button3:
                 Intent intent2 = new Intent(MainActivity.this,WebViewActivity.class);
                 startActivity(intent2);
@@ -167,6 +270,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                         .build();
                 manager.notify(1,notification);
                 break;
+            case R.id.notification2:
+                Intent notificationIntent = new Intent(MainActivity.this,NotificationActivity.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0);
+                NotificationManager manager2 = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                Notification notification2 = new NotificationCompat.Builder(this)
+                        .setContentTitle("This is intent text")
+                        .setContentText("This is content text")
+                        .setWhen(System.currentTimeMillis())
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true)
+                        .build();
+                manager2.notify(1,notification2);
+                break;
+
             default:
                 break;
 
