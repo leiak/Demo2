@@ -23,16 +23,22 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button-url"
+            android:text="Btnurl"
             android:textAllCaps="false"
             />
         <Button
             android:id="@+id/btnpro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button_progressbar"
+            android:text="progressbar"
             android:textAllCaps="false"
             />
+        <Button
+            android:id="@+id/waveview"
+            android:text="waveview"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"

@@ -113,6 +113,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button takephoto = (Button) findViewById(R.id.takephoto);
         takephoto.setOnClickListener(this);
 
+        Button waveview = (Button) findViewById(R.id.waveview);
+        waveview.setOnClickListener(this);
+
         mMZBanner = (MZBannerView) findViewById(R.id.banner);
 
         final List<String> list = new ArrayList<>();
@@ -184,6 +187,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.waveview:
+                Intent waveview = new Intent(this,WaveActivity.class);
+                startActivity(waveview);
+                break;
             case R.id.takephoto:
                 Intent takephoto = new Intent(MainActivity.this,TakePhotoActivity.class);
                 startActivity(takephoto);
