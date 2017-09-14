@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.hello.demo2.WaveActivity">
+
+    <RelativeLayout
+        android:layout_width="181dp"
+        android:layout_height="181dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <cn.hello.demo2.util.WaveView
+            android:id="@+id/waveview"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            app:backgroudColor="@color/white"
+            app:max="100"
+            app:progress="80" />
+
+        <ImageView
+            android:layout_width="181dp"
+            android:layout_height="181dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/shape_circle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="12.00%"
+            android:textColor="#f4333c"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
