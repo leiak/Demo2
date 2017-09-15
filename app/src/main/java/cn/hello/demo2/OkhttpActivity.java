@@ -5,12 +5,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 
 public class OkhttpActivity extends BaseActivity implements View.OnClickListener {
+
+    private static final String TAG = "Okhttp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class OkhttpActivity extends BaseActivity implements View.OnClickListener
             public void run() {
                 try{
                     OkHttpClient client = new OkHttpClient();
-                    String url = "http://m.baidu.com";
+                    String url = "http://apicloud.mob.com/v1/weather/query?key=146d30f8f3b93&city=%E8%B5%A4%E5%B3%B0";
 
                     Request request = new Request.Builder()
                             .url(url)
@@ -46,8 +51,23 @@ public class OkhttpActivity extends BaseActivity implements View.OnClickListener
 
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    //showResponse(responseData);
-                    Log.d("showResponsedata",responseData);
+
+
+                    JSONObject weatherJSONObject = new JSONObject(responseData);
+                    String msg = (String) weatherJSONObject.get("msg");
+                    Log.d(TAG,"msg is "+msg);
+                    JSONArray resultJSONArray = weatherJSONObject.getJSONArray("result");
+
+                    JSONObject resultJSONObject = resultJSONArray.getJSONObject(0);
+                    String result = resultJSONObject.getString("airCondition");
+                    Log.d(TAG,"airCondition is "+result);
+
+                    JSONArray futureJSONArray = resultJSONObject.getJSONArray("future");
+                    for (int i=0;i<futureJSONArray.length();i++) {
+                        String date = futureJSONArray.getJSONObject(i).getString("date");
+                        Log.d(TAG,"date is "+date);
+                    }
+
 
                 }catch (Exception e){
                      e.printStackTrace();
