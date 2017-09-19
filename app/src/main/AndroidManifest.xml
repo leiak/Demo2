@@ -94,6 +94,8 @@
         </activity>
         <activity android:name=".SharedPreferenceActivity">
         </activity>
+        <activity android:name=".GsonOneActivity">
+        </activity>
     </application>
 
 </manifest>

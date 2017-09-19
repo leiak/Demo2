@@ -119,6 +119,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button sharedPre = (Button) findViewById(R.id.sharePre);
         sharedPre.setOnClickListener(this);
 
+        Button btngson = (Button) findViewById(R.id.btngson);
+        btngson.setOnClickListener(this);
+
         mMZBanner = (MZBannerView) findViewById(R.id.banner);
 
         final List<String> list = new ArrayList<>();
@@ -190,6 +193,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.btngson:
+                Intent btngson = new Intent(this,GsonOneActivity.class);
+                startActivity(btngson);
+                break;
             case R.id.sharePre:
                 Intent sharePre = new Intent(this,SharedPreferenceActivity.class);
                 startActivity(sharePre);
