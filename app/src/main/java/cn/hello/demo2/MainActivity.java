@@ -29,6 +29,7 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.hello.demo2.qqlogin.QQLoginActivity;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
@@ -122,6 +123,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button btngson = (Button) findViewById(R.id.btngson);
         btngson.setOnClickListener(this);
 
+        Button qqlogin = (Button) findViewById(R.id.qqlogin);
+        qqlogin.setOnClickListener(this);
+
         mMZBanner = (MZBannerView) findViewById(R.id.banner);
 
         final List<String> list = new ArrayList<>();
@@ -193,6 +197,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.qqlogin:
+                Intent qqlogin = new Intent(this, QQLoginActivity.class);
+                startActivity(qqlogin);
+                break;
             case R.id.btngson:
                 Intent btngson = new Intent(this,GsonOneActivity.class);
                 startActivity(btngson);

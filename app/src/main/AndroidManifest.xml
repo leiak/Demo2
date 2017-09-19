@@ -96,6 +96,8 @@
         </activity>
         <activity android:name=".GsonOneActivity">
         </activity>
+        <activity android:name=".qqlogin.QQLoginActivity">
+        </activity>
     </application>
 
 </manifest>
