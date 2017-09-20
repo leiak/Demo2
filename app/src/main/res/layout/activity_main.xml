@@ -83,16 +83,22 @@
             android:id="@+id/btnprodia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button_progressDialog"
+            android:text="proDialog"
             android:textAllCaps="false"
             />
         <Button
             android:id="@+id/btnlistview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button_Basiclistview"
+            android:text="Basiclistview"
             android:textAllCaps="false"
             />
+        <Button
+            android:id="@+id/demodb"
+            android:text="demodb"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
     <LinearLayout

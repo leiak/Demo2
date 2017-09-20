@@ -29,6 +29,7 @@ import com.zhouwei.mzbanner.holder.MZViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.hello.demo2.demo.GetDbdataDemo;
 import cn.hello.demo2.qqlogin.QQLoginActivity;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
@@ -126,6 +127,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Button qqlogin = (Button) findViewById(R.id.qqlogin);
         qqlogin.setOnClickListener(this);
 
+        Button demodb = (Button) findViewById(R.id.demodb);
+        demodb.setOnClickListener(this);
+
         mMZBanner = (MZBannerView) findViewById(R.id.banner);
 
         final List<String> list = new ArrayList<>();
@@ -197,6 +201,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.demodb:
+                Intent demodb = new Intent(this, GetDbdataDemo.class);
+                startActivity(demodb);
+                break;
             case R.id.qqlogin:
                 Intent qqlogin = new Intent(this, QQLoginActivity.class);
                 startActivity(qqlogin);

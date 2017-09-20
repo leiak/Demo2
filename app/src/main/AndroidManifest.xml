@@ -98,6 +98,8 @@
         </activity>
         <activity android:name=".qqlogin.QQLoginActivity">
         </activity>
+        <activity android:name=".demo.GetDbdataDemo">
+        </activity>
     </application>
 
 </manifest>

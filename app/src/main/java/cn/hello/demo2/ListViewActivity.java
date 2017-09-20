@@ -1,5 +1,7 @@
 package cn.hello.demo2;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.hello.demo2.bean.Province;
+import cn.hello.demo2.db.ProvinceHelper;
 import cn.hello.demo2.util.HttpUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -35,13 +38,13 @@ public class ListViewActivity extends BaseActivity {
 
     private  ArrayAdapter<String> adapter;
 
+    private ProvinceHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
         queryProvinces();
-
-
     }
 
     private Handler mHandler = new Handler() {
@@ -79,25 +82,29 @@ public class ListViewActivity extends BaseActivity {
                 String responseText = response.body().string();
                 try {
                     JSONArray responseArray = new JSONArray(responseText);
+                    dbHelper = new ProvinceHelper(ListViewActivity.this,"Area.db",null,1);
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+
                     for (int i=0;i < responseArray.length();i++) {
                         JSONObject responseObject = responseArray.getJSONObject(i);
                         Province mProvince = new Province();
                         mProvince.setId(responseObject.getInt("id"));
                         mProvince.setName(responseObject.getString("name"));
-                        //Log.d(TAG,"mProvince id is "+ responseObject.getInt("id"));
-                        //Log.d(TAG,"mProvince name is "+ responseObject.getString("name"));
                         mProvincesData.add(mProvince);
-
-
+                        ContentValues values = new ContentValues();
+                        values.put("id",responseObject.getInt("id"));
+                        values.put("name",responseObject.getString("name"));
+                        db.insert("province",null,values);
+                        values.clear();
                     }
+
+
+
                     Message msg2 =new Message();
                     msg2.obj = mProvincesData; //可以是基本类型，可以是对象，可以是List、map等；
                     //mHandler.sendEmptyMessage(0);//这个相当于设置了msg2.what=0
                     msg2.what=0;
                     mHandler.sendMessage(msg2);
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
